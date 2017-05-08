@@ -1,0 +1,6 @@
+theme: jekyll-theme-cayman
+timezone: Europe/Kiev
+webrick:
+  headers:
+    My-Header: PHP-FPM stable and fast container
+    My-Other-Header: Docker image lyberteam/php-fpm-7.0.12
