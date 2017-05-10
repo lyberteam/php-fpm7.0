@@ -28,9 +28,8 @@ Build status: [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?br
  * php7.0-curl
  * php7.0-gd
  * php7.0-dev
- * php7.0-fpm
  * php7.0-redis
  * php7.0-memcached
  * php7.0-mongodb
- * php7.0-xdebug
- * php7.0-imagick (`new`)
+ * php7.0-imagick
+ * php7.0-fpm

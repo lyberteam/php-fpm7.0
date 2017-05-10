@@ -52,7 +52,6 @@ RUN apt-get update -yqq \
 	php7.0-redis \
 	php7.0-memcached \
 	php7.0-mongodb \
-	php7.0-xdebug \
     php7.0-imagick \
     php7.0-fpm
 
@@ -60,37 +59,9 @@ RUN apt-get update -yqq \
 RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone
 RUN echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
 
-
-# Install phpredis extension
-#RUN mkdir /tmp/phpredis \
-#    && cd /tmp/phpredis \
-#    && git clone -b php7 https://github.com/phpredis/phpredis . \
-#    && phpize7.0 && ./configure && make && make install \
-#    && echo "extension=redis.so" > /etc/php/7.0/mods-available/redis.ini
-
-## Install Xdebug extension
-#RUN mkdir /tmp/xdebug \
-#    && cd /tmp/xdebug \
-#    && wget -c "http://xdebug.org/files/xdebug-2.5.3.tgz" \
-#    && tar -xf xdebug-2.5.3.tgz \
-#    && cd xdebug-2.5.3/ \
-#    && phpize \
-#    && ./configure \
-#    && make \
-#    && make install
-#
-#COPY php-conf/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
-##    echo "zend_extension=xdebug.so" > /etc/php/7.0/mods-available/xdebug.ini \
-#RUN ln -sf /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini \
-#    && ln -sf /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
-
 # Download browscap.ini
 RUN mkdir /var/lib/browscap
 RUN wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
-
-## Install composer globally
-#RUN echo "Install composer globally"
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Copy our config files for php7.0 fpm and php7.0 cli
 COPY php-conf/php.ini /etc/php/7.0/cli/php.ini
