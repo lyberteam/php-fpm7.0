@@ -33,4 +33,4 @@ Build status: [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?br
  * php7.0-memcached
  * php7.0-mongodb
  * php7.0-xdebug
- * php7.0-imagick (`new`)
+ * php7.0-imagick
