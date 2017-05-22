@@ -33,6 +33,7 @@ RUN apt-get update -yqq \
     wget \
     mc \
     curl \
+    sendmail \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
