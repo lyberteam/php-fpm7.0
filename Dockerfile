@@ -54,7 +54,10 @@ RUN apt-get update -yqq \
 	php7.0-mongodb \
 	php7.0-xdebug \
     php7.0-imagick \
-    php7.0-fpm
+    php7.0-fpm \
+    && apt-get install -y -q --no-install-recommends \
+       ssmtp
+
 
 # Add default timezone
 RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone
