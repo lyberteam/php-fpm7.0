@@ -2,7 +2,10 @@
 
  **Helpful PHP-FPM image from official debian:jessie**
 
-Build status: [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?branch=master)](https://travis-ci.org/lyberteam/php-fpm7.0)
+ >  [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?branch=master)](https://travis-ci.org/lyberteam/php-fpm7.0) \
+ >  [![Size and Layers](https://images.microbadger.com/badges/image/lyberteam/php-fpm7.0.svg?branch=master)](https://microbadger.com/images/lyberteam/php-fpm7.0) \
+ >  [![Version](https://images.microbadger.com/badges/version/lyberteam/php-fpm7.0.svg)](https://microbadger.com/images/lyberteam/php-fpm7.0)
+ >
 
  > PHP-FPM version - 7.0.18  \
  > This image was done from the official php-fpm image; \
