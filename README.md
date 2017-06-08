@@ -9,12 +9,10 @@
  >  [![Version](https://images.microbadger.com/badges/version/lyberteam/php-fpm7.0.svg)](https://microbadger.com/images/lyberteam/php-fpm7.0)
 
  >  [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/lyberteam/php-fpm7.0)
-
  >
-
  > PHP-FPM version - 7.0.18
 
- > This image was done from the official php-fpm image;
+ > This image was done from the official php-fpm image
 
  > There are also have installed a lot of useful extensions
 
