@@ -2,12 +2,16 @@
 
  **Helpful PHP-FPM image from official debian:jessie**
 
-Build status: [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?branch=master)](https://travis-ci.org/lyberteam/php-fpm7.0)
+Build status:  [![Build Status](https://travis-ci.org/lyberteam/php-fpm7.0.png?branch=master)](https://travis-ci.org/lyberteam/php-fpm7.0)
 
- > PHP-FPM version - 7.0.18  \
- > This image was done from the official php-fpm image; \
- > There are also have installed a lot of useful extensions \
- > DateTime - Europe/Kiev \
+ > PHP-FPM version - 7.0.18
+
+ > This image was done from the official php-fpm image
+
+ > There are also have installed a lot of useful extensions
+
+ > DateTime - Europe/Kiev
+
  > Composer installed globally
 
 ### Extensions:
