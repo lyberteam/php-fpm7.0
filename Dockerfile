@@ -63,6 +63,10 @@ RUN echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone
 RUN mkdir /var/lib/browscap
 RUN wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
 
+## Install composer globally
+RUN echo "Install composer globally"
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+
 # Copy our config files for php7.0 fpm and php7.0 cli
 COPY php-conf/php.ini /etc/php/7.0/cli/php.ini
 COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
