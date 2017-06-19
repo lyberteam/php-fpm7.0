@@ -44,3 +44,8 @@
  * php7.0-mongodb
  * php7.0-xdebug
  * php7.0-imagick (`new`)
+
+### In addition
+
+ * Composer (installed globally)
+ * Browscap ([Browscap official page](http://browscap.org/))
