@@ -97,6 +97,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 
 # Copy our config files for php7.0 fpm and php7.0 cli
 COPY php-conf/php.ini /etc/php/7.0/cli/php.ini
+COPY php-conf/php-fpm.ini /etc/php/7.0/fpm/php.ini
 COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY php-conf/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
