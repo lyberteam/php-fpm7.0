@@ -12,13 +12,13 @@
  >
  > PHP-FPM version - 7.0.18
 
- > This image was done from the official php-fpm image
-
- > There are also have installed a lot of useful extensions
-
  > DateTime - Europe/Kiev
 
  > Composer installed globally
+
+## Tags
+ * lyberteam/php-fpm7.0:xdebug - with xdebug
+ * lyberteam/php-fpm7.0:stable
 
 ### Extensions:
 
@@ -42,7 +42,7 @@
  * php7.0-redis
  * php7.0-memcached
  * php7.0-mongodb
- * php7.0-xdebug
+ * php7.0-xdebug (`only for lyberteam/php-fpm7.0:xdebug`)
  * php7.0-imagick (`new`)
 
 ### In addition
