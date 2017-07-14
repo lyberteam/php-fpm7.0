@@ -49,3 +49,4 @@
 
  * Composer (installed globally)
  * Browscap ([Browscap official page](http://browscap.org/))
+ * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
