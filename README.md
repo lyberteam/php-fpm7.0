@@ -43,9 +43,10 @@
  * php7.0-memcached
  * php7.0-mongodb
  * php7.0-xdebug (`only for lyberteam/php-fpm7.0:xdebug`)
- * php7.0-imagick (`new`)
+ * php7.0-imagick
 
 ### In addition
 
  * Composer (installed globally)
  * Browscap ([Browscap official page](http://browscap.org/))
+ * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/)) (`new`)
