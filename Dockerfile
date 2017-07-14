@@ -101,6 +101,16 @@ COPY php-conf/php-fpm.ini /etc/php/7.0/fpm/php.ini
 COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY php-conf/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
+## Install wkhtmltopdf and xvfb
+RUN apt-get install -y \
+    wkhtmltopdf \
+    xvfb
+## Create xvfb wrapper for wkhtmltopdf and create special sh script
+RUN touch /usr/local/bin/wkhtmltopdf \
+    && chmod a+x /usr/local/bin/wkhtmltopdf \
+    && echo 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' > /usr/local/bin/wkhtmltopdf \
+    && chmod a+x /usr/local/bin/wkhtmltopdf
+
 RUN usermod -aG www-data www-data
 # Reconfigure system time
 RUN  dpkg-reconfigure -f noninteractive tzdata
