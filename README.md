@@ -50,3 +50,13 @@
  * Composer (installed globally)
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
+
+### PHP Tools:
+
+ * PHPUnit
+ * PHP_CodeSniffer
+ * PHPLOC
+ * PHP_Depend
+ * PHPMD
+ * PHPCPD
+ * phpDox

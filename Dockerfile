@@ -60,8 +60,8 @@ RUN apt-get update -yqq \
 
 
 # Add default timezone
-RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone
-RUN echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
+RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone \
+    && echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
 
 
 # Install phpredis extension
@@ -88,11 +88,10 @@ RUN echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone
 #    && ln -sf /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
 
 # Download browscap.ini
-RUN mkdir /var/lib/browscap
-RUN wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
+RUN mkdir /var/lib/browscap \
+    && wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
 
 ## Install composer globally
-RUN echo "Install composer globally"
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Copy our config files for php7.0 fpm and php7.0 cli
@@ -100,6 +99,9 @@ COPY php-conf/php.ini /etc/php/7.0/cli/php.ini
 COPY php-conf/php-fpm.ini /etc/php/7.0/fpm/php.ini
 COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY php-conf/www.conf /etc/php/7.0/fpm/pool.d/www.conf
+
+RUN rm /etc/php/7.0/mods-available/xdebug.ini \
+    && /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 
 ## Install wkhtmltopdf and xvfb
 RUN apt-get install -y \
@@ -110,6 +112,55 @@ RUN touch /usr/local/bin/wkhtmltopdf \
     && chmod a+x /usr/local/bin/wkhtmltopdf \
     && echo 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' > /usr/local/bin/wkhtmltopdf \
     && chmod a+x /usr/local/bin/wkhtmltopdf
+
+## Install PHP CODE_SNIFFER
+RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+RUN chmod +x phpcs.phar
+RUN mv phpcs.phar /usr/local/bin/phpcs
+RUN phpcs --version
+
+RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+RUN chmod +x phpcbf.phar
+RUN mv phpcbf.phar /usr/local/bin/phpcbf
+RUN phpcbf --version
+
+## Install PHPLOC
+RUN wget https://phar.phpunit.de/phploc.phar
+RUN chmod +x phploc.phar
+RUN mv phploc.phar /usr/local/bin/phploc
+RUN phploc --version
+
+## Install PHP_DEPEND
+RUN wget http://static.pdepend.org/php/latest/pdepend.phar
+RUN chmod +x pdepend.phar
+RUN mv pdepend.phar /usr/local/bin/pdepend
+RUN pdepend --version
+
+## Install PHPUNIT
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+RUN phpunit --version
+
+## Install PHPMD
+RUN wget -c http://static.phpmd.org/php/latest/phpmd.phar
+RUN chmod +x phpmd.phar
+RUN mv phpmd.phar /usr/local/bin/phpmd
+RUN phpmd --version
+
+## Install PHPCPD
+RUN echo "installing PHPCPD"
+RUN wget https://phar.phpunit.de/phpcpd.phar
+RUN chmod +x phpcpd.phar
+RUN mv phpcpd.phar /usr/local/bin/phpcpd
+RUN phpcpd --version
+
+## Install PHPDOX
+RUN echo "installing PHPDOX"
+RUN wget http://phpdox.de/releases/phpdox.phar
+RUN chmod +x phpdox.phar
+RUN mv phpdox.phar /usr/local/bin/phpdox
+RUN phpdox --version
 
 RUN usermod -aG www-data www-data
 # Reconfigure system time
