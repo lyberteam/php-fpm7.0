@@ -101,7 +101,7 @@ COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY php-conf/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 RUN rm /etc/php/7.0/mods-available/xdebug.ini \
-    && /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+    && rm /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 
 ## Install wkhtmltopdf and xvfb
 RUN apt-get install -y \
