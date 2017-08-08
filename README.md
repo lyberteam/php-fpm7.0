@@ -52,7 +52,8 @@
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
 
-### PHP Tools (`only for lyberteam/php-fpm7.0:xtools`):
+### PHP Tools:
+(`only for lyberteam/php-fpm7.0:xdebug`)
  * [PHP Unit](https://phpunit.de/)
  * [PHP CodeSniffer](https://www.squizlabs.com/php-codesniffer)
  * [PHPLOC](https://inviqa.com/blog/phploc-php-lines-code)
@@ -60,3 +61,4 @@
  * [PHPMD (Mess Detector)](https://phpmd.org/)
  * [PHPCPD (Detecting duplicate code in PHP files)](http://www.codediesel.com/tools/detecting-duplicate-code-in-php-files/)
  * [PHPDox - Be free with docs!](http://phpdox.de/)
+

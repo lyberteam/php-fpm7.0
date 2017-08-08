@@ -33,6 +33,7 @@ RUN apt-get update -yqq \
     wget \
     mc \
     curl \
+    sendmail \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -57,7 +58,6 @@ RUN apt-get update -yqq \
     php7.0-fpm \
     && apt-get install -y -q --no-install-recommends \
        ssmtp
-
 
 # Add default timezone
 RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone \
