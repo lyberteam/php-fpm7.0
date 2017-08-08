@@ -8,9 +8,9 @@
 
  >  [![Version](https://images.microbadger.com/badges/version/lyberteam/php-fpm7.0.svg)](https://microbadger.com/images/lyberteam/php-fpm7.0)
 
- >  [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/lyberteam/php-fpm7.0)
+ >  [![Docker Pulls](https://img.shields.io/docker/pulls/lyberteam/php-fpm7.0.svg)](https://hub.docker.com/r/lyberteam/php-fpm7.0)
  >
- > PHP-FPM version - 7.0.18
+ > PHP-FPM version - 7.0.20
 
  > DateTime - Europe/Kiev
 
@@ -18,6 +18,7 @@
 
 ## Tags
  * lyberteam/php-fpm7.0:xdebug - with xdebug
+ * lyberteam/php-fpm7.0:xtools - with xdebug and code check tools
  * lyberteam/php-fpm7.0:stable
 
 ### Extensions:
@@ -51,7 +52,7 @@
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
 
-### PHP Tools:
+### PHP Tools (`only for lyberteam/php-fpm7.0:xtools`):
  * [PHP Unit](https://phpunit.de/)
  * [PHP CodeSniffer](https://www.squizlabs.com/php-codesniffer)
  * [PHPLOC](https://inviqa.com/blog/phploc-php-lines-code)
