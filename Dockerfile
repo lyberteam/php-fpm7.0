@@ -48,6 +48,7 @@ RUN apt-get update -yqq \
 	php7.0-ldap \
 	php7.0-curl \
 	php7.0-gd  \
+	php7.0-zip  \
 	php7.0-dev \
 	php7.0-redis \
 	php7.0-memcached \
@@ -139,3 +140,56 @@ CMD ["/start.sh"]
 WORKDIR /var/www/lyberteam
 
 EXPOSE 9000
+
+#libapache2-mod-php7.0 - server-side, HTML-embedded scripting language (Apache 2 module)
+#libphp7.0-embed - HTML-embedded scripting language (Embedded SAPI library)
+#php-all-dev - package depending on all supported PHP development packages
+#php7.0 - server-side, HTML-embedded scripting language (metapackage)
+#php7.0-apcu - APC User Cache for PHP
+#php7.0-apcu-bc - APCu Backwards Compatibility Module
+#php7.0-bcmath - Bcmath module for PHP
+#php7.0-bz2 - bzip2 module for PHP
+#php7.0-cgi - server-side, HTML-embedded scripting language (CGI binary)
+#php7.0-cli - command-line interpreter for the PHP scripting language
+#php7.0-common - documentation, examples and common module for PHP
+#php7.0-curl - CURL module for PHP
+#php7.0-dba - DBA module for PHP
+#php7.0-dbg - Debug symbols for PHP7.0
+#php7.0-dev - Files for PHP7.0 module development
+#php7.0-enchant - Enchant module for PHP
+#php7.0-fpm - server-side, HTML-embedded scripting language (FPM-CGI binary)
+#php7.0-gd - GD module for PHP
+#php7.0-geoip - GeoIP module for PHP
+#php7.0-gmp - GMP module for PHP
+#php7.0-igbinary - igbinary serializer for PHP
+#php7.0-imagick - Provides a wrapper to the ImageMagick library
+#php7.0-imap - IMAP module for PHP
+#php7.0-interbase - Interbase module for PHP
+#php7.0-intl - Internationalisation module for PHP
+#php7.0-json - JSON module for PHP
+#php7.0-ldap - LDAP module for PHP
+#php7.0-mbstring - MBSTRING module for PHP
+#php7.0-mcrypt - libmcrypt module for PHP
+#php7.0-memcached - memcached extension module for PHP, uses libmemcached
+#php7.0-mongodb - MongoDB driver for PHP
+#php7.0-msgpack - MessagePack serializer for PHP
+#php7.0-mysql - MySQL module for PHP
+#php7.0-odbc - ODBC module for PHP
+#php7.0-opcache - Zend OpCache module for PHP
+#php7.0-pgsql - PostgreSQL module for PHP
+#php7.0-phpdbg - server-side, HTML-embedded scripting language (PHPDBG binary)
+#php7.0-pspell - pspell module for PHP
+#php7.0-readline - readline module for PHP
+#php7.0-recode - recode module for PHP
+#php7.0-redis - PHP extension for interfacing with Redis
+#php7.0-snmp - SNMP module for PHP
+#php7.0-soap - SOAP module for PHP
+#php7.0-sqlite3 - SQLite3 module for PHP
+#php7.0-ssh2 - Bindings for the libssh2 library
+#php7.0-sybase - Sybase module for PHP
+#php7.0-tidy - tidy module for PHP
+#php7.0-xdebug - Xdebug Module for PHP
+#php7.0-xml - DOM, SimpleXML, WDDX, XML, and XSL module for PHP
+#php7.0-xmlrpc - XMLRPC-EPI module for PHP
+#php7.0-xsl - XSL module for PHP (dummy)
+#php7.0-zip - Zip module for PHP
