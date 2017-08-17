@@ -33,6 +33,7 @@ RUN apt-get update -yqq \
     wget \
     mc \
     curl \
+    cron \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -48,6 +49,7 @@ RUN apt-get update -yqq \
 	php7.0-ldap \
 	php7.0-curl \
 	php7.0-gd  \
+    php7.0-zip  \
 	php7.0-dev \
 	php7.0-redis \
 	php7.0-memcached \

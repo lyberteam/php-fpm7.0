@@ -37,6 +37,7 @@
  * php7.0-ldap
  * php7.0-curl
  * php7.0-gd
+ * php7.0-zip
  * php7.0-dev
  * php7.0-fpm
  * php7.0-redis
@@ -48,5 +49,6 @@
 ### In addition
 
  * Composer (installed globally)
+ * Cron (for Magento support)
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/)) (`new`)
