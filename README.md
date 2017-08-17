@@ -49,5 +49,6 @@
 ### In addition
 
  * Composer (installed globally)
+ * Cron (for Magento support)
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
