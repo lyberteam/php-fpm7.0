@@ -1,0 +1,62 @@
+db:
+  container_name: awesome_postgre_db
+  image: postgres
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_USER: awesome_user
+    POSTGRES_PASSWORD: awesome_db_password
+    POSTGRES_DB: awesome_db
+
+## Just in case you want to work with MySQL
+#db:
+#  container_name: awesome_mysql_db
+#  image: mysql
+#  ports:
+#    - "3306:3306"
+#  environment:
+#    MYSQL_ROOT_PASSWORD: awesome_root_password
+#    MYSQL_DATABASE: awesome_db
+#    MYSQL_USER: awesome_user
+#    MYSQL_PASSWORD: awesome_db_password
+#    TZ: Europe/London
+#  working_dir: /var/www/awesome
+
+php:
+  container_name: awesome_php
+  restart: always
+  image: lyberteam/php-fpm7.0:xdebug
+  ## image: lyberteam/php-fpm7.0:stable ## if you don't need xdebug
+  links:
+      - db
+      - mail
+  volumes:
+      - /var/www/awesome:/var/www/awesome
+  working_dir: /var/www/awesome
+
+
+nginx:
+  restart: always
+  image: lyberteam/nginx-base
+  ports:
+     - "80:80"
+  working_dir: /etc/nginx/vhost
+  ## just in case you want to use php-fpm container you should use links: -php
+  links:
+     - php
+  volumes:
+     - /var/www/awesome:/var/www/awesome
+     - /var/www/awesome/nginx/logs:/var/log/nginx
+     - /var/www/awesome/nginx/nginx.conf:/etc/nginx/nginx.conf
+     - /var/www/awesome/nginx/conf.d/upstream.conf:/etc/nginx/conf.d/upstream.conf
+     - /var/www/awesome/nginx/vhost/lyberteam.conf:/etc/nginx/vhost/lyberteam.conf
+
+mail:
+  container_name: awesome_mail
+  restart: always
+  image: schickling/mailcatcher
+  expose:
+      - "1025"
+  ports:
+      - 1025:1025
+      - 1080:1080

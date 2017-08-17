@@ -13,7 +13,7 @@ RUN /var/www/lyberteam/lyberteam-message.sh
 MAINTAINER Lyberteam <lyberteamltd@gmail.com>
 LABEL Vendor="Lyberteam"
 LABEL Description="PHP-FPM v7.0.18"
-LABEL Version="1.0.2"
+LABEL Version="1.0.3"
 
 ENV LYBERTEAM_TIME_ZONE Europe/Kiev
 
@@ -34,6 +34,7 @@ RUN apt-get update -yqq \
     mc \
     curl \
     cron \
+    sendmail \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -55,18 +56,19 @@ RUN apt-get update -yqq \
 	php7.0-memcached \
 	php7.0-mongodb \
     php7.0-imagick \
-    php7.0-fpm
+    php7.0-fpm \
+    && apt-get install -y -q --no-install-recommends \
+       ssmtp
 
 # Add default timezone
-RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone
-RUN echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
+RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone \
+    && echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
 
 # Download browscap.ini
-RUN mkdir /var/lib/browscap
-RUN wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
+RUN mkdir /var/lib/browscap \
+    && wget http://browscap.org/stream?q=BrowsCapINI -O /var/lib/browscap/browscap.ini
 
 ## Install composer globally
-RUN echo "Install composer globally"
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Copy our config files for php7.0 fpm and php7.0 cli
