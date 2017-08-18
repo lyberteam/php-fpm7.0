@@ -12,7 +12,7 @@ RUN /var/www/lyberteam/lyberteam-message.sh
 
 MAINTAINER Lyberteam <lyberteamltd@gmail.com>
 LABEL Vendor="Lyberteam"
-LABEL Description="PHP-FPM v7.0.18"
+LABEL Description="PHP-FPM v7.0.22"
 LABEL Version="1.0.2"
 
 ENV LYBERTEAM_TIME_ZONE Europe/Kiev
