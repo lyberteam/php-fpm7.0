@@ -12,7 +12,7 @@ RUN /var/www/lyberteam/lyberteam-message.sh
 
 MAINTAINER Lyberteam <lyberteamltd@gmail.com>
 LABEL Vendor="Lyberteam"
-LABEL Description="PHP-FPM v7.0.18"
+LABEL Description="PHP-FPM v7.0.22"
 LABEL Version="1.0.3"
 
 ENV LYBERTEAM_TIME_ZONE Europe/Kiev
@@ -23,7 +23,6 @@ RUN apt-key add /tmp/dotdeb.gpg \
     && echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list \
     && echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 
-## Install php7.0 extension
 RUN apt-get update -yqq \
     && apt-get install -yqq \
 	ca-certificates \
@@ -33,7 +32,12 @@ RUN apt-get update -yqq \
     wget \
     mc \
     curl \
-    sendmail \
+    cron \
+    zip \
+    ssmtp
+
+## Install php7.0 extension
+RUN apt-get install -yqq \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -49,11 +53,11 @@ RUN apt-get update -yqq \
 	php7.0-ldap \
 	php7.0-curl \
 	php7.0-gd  \
+    php7.0-zip  \
 	php7.0-dev \
 	php7.0-redis \
 	php7.0-memcached \
 	php7.0-mongodb \
-	php7.0-xdebug \
     php7.0-imagick \
     php7.0-fpm \
     && apt-get install -y -q --no-install-recommends \
@@ -62,30 +66,6 @@ RUN apt-get update -yqq \
 # Add default timezone
 RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone \
     && echo "date.timezone=$LYBERTEAM_TIME_ZONE" > /etc/php/7.0/cli/conf.d/timezone.ini
-
-
-# Install phpredis extension
-#RUN mkdir /tmp/phpredis \
-#    && cd /tmp/phpredis \
-#    && git clone -b php7 https://github.com/phpredis/phpredis . \
-#    && phpize7.0 && ./configure && make && make install \
-#    && echo "extension=redis.so" > /etc/php/7.0/mods-available/redis.ini
-
-## Install Xdebug extension
-#RUN mkdir /tmp/xdebug \
-#    && cd /tmp/xdebug \
-#    && wget -c "http://xdebug.org/files/xdebug-2.5.3.tgz" \
-#    && tar -xf xdebug-2.5.3.tgz \
-#    && cd xdebug-2.5.3/ \
-#    && phpize \
-#    && ./configure \
-#    && make \
-#    && make install
-#
-#COPY php-conf/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
-##    echo "zend_extension=xdebug.so" > /etc/php/7.0/mods-available/xdebug.ini \
-#RUN ln -sf /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini \
-#    && ln -sf /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
 
 # Download browscap.ini
 RUN mkdir /var/lib/browscap \
@@ -100,9 +80,6 @@ COPY php-conf/php-fpm.ini /etc/php/7.0/fpm/php.ini
 COPY php-conf/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 COPY php-conf/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
-RUN rm /etc/php/7.0/mods-available/xdebug.ini \
-    && rm /etc/php/7.0/fpm/conf.d/20-xdebug.ini
-
 ## Install wkhtmltopdf and xvfb
 RUN apt-get install -y \
     wkhtmltopdf \
@@ -112,55 +89,6 @@ RUN touch /usr/local/bin/wkhtmltopdf \
     && chmod a+x /usr/local/bin/wkhtmltopdf \
     && echo 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' > /usr/local/bin/wkhtmltopdf \
     && chmod a+x /usr/local/bin/wkhtmltopdf
-
-## Install PHP CODE_SNIFFER
-RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-RUN chmod +x phpcs.phar
-RUN mv phpcs.phar /usr/local/bin/phpcs
-RUN phpcs --version
-
-RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
-RUN chmod +x phpcbf.phar
-RUN mv phpcbf.phar /usr/local/bin/phpcbf
-RUN phpcbf --version
-
-## Install PHPLOC
-RUN wget https://phar.phpunit.de/phploc.phar
-RUN chmod +x phploc.phar
-RUN mv phploc.phar /usr/local/bin/phploc
-RUN phploc --version
-
-## Install PHP_DEPEND
-RUN wget http://static.pdepend.org/php/latest/pdepend.phar
-RUN chmod +x pdepend.phar
-RUN mv pdepend.phar /usr/local/bin/pdepend
-RUN pdepend --version
-
-## Install PHPUNIT
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
-RUN phpunit --version
-
-## Install PHPMD
-RUN wget -c http://static.phpmd.org/php/latest/phpmd.phar
-RUN chmod +x phpmd.phar
-RUN mv phpmd.phar /usr/local/bin/phpmd
-RUN phpmd --version
-
-## Install PHPCPD
-RUN echo "installing PHPCPD"
-RUN wget https://phar.phpunit.de/phpcpd.phar
-RUN chmod +x phpcpd.phar
-RUN mv phpcpd.phar /usr/local/bin/phpcpd
-RUN phpcpd --version
-
-## Install PHPDOX
-RUN echo "installing PHPDOX"
-RUN wget http://phpdox.de/releases/phpdox.phar
-RUN chmod +x phpdox.phar
-RUN mv phpdox.phar /usr/local/bin/phpdox
-RUN phpdox --version
 
 RUN usermod -aG www-data www-data
 # Reconfigure system time

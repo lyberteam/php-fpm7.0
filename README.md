@@ -114,23 +114,26 @@ No you type awesome.io in your favorite browser and enjoy.
  * php7.0-ldap
  * php7.0-curl
  * php7.0-gd
+ * php7.0-zip
  * php7.0-dev
  * php7.0-fpm
  * php7.0-redis
  * php7.0-memcached
  * php7.0-mongodb
- * php7.0-xdebug (`only for lyberteam/php-fpm7.0:xdebug`)
+ * php7.0-xdebug (`only for lyberteam/php-fpm7.0:xdebug or :xtools`)
  * php7.0-imagick (`new`)
 
 ### In addition
 
  * Composer (installed globally)
+ * Cron (added for Magento support)
  * Browscap ([Browscap official page](http://browscap.org/))
  * wkhtmltopdf ([Official website](https://wkhtmltopdf.org/))
 
 ### PHP Tools:
-(`only for lyberteam/php-fpm7.0:xdebug`)
+(`Tools installed in lyberteam/php-fpm7.0:xtools`)
  * [PHP Unit](https://phpunit.de/)
+ (`also installed in lyberteam/php-fpm7.0:xdebug`)
  * [PHP CodeSniffer](https://www.squizlabs.com/php-codesniffer)
  * [PHPLOC](https://inviqa.com/blog/phploc-php-lines-code)
  * [PHP Depend](https://pdepend.org/)
