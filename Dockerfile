@@ -34,6 +34,10 @@ RUN apt-get update -yqq \
     mc \
     curl \
     cron \
+    zip
+#    ssmtp
+
+RUN apt-get install -yqq \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -56,9 +60,7 @@ RUN apt-get update -yqq \
 	php7.0-mongodb \
 	php7.0-xdebug \
     php7.0-imagick \
-    php7.0-fpm \
-    && apt-get install -y -q --no-install-recommends \
-       ssmtp
+    php7.0-fpm
 
 
 # Add default timezone
