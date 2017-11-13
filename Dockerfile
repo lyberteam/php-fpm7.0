@@ -35,6 +35,7 @@ RUN apt-get update -yqq \
     curl \
     sendmail \
     cron \
+    zip \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
