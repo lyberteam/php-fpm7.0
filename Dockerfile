@@ -23,7 +23,6 @@ RUN apt-key add /tmp/dotdeb.gpg \
     && echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list \
     && echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 
-## Install php7.0 extension
 RUN apt-get update -yqq \
     && apt-get install -yqq \
 	ca-certificates \
@@ -33,9 +32,12 @@ RUN apt-get update -yqq \
     wget \
     mc \
     curl \
-    sendmail \
     cron \
     zip \
+    ssmtp
+
+## Install php7.0 extension
+RUN apt-get install -yqq \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
@@ -58,9 +60,7 @@ RUN apt-get update -yqq \
 	php7.0-mongodb \
 	php7.0-xdebug \
     php7.0-imagick \
-    php7.0-fpm \
-    && apt-get install -y -q --no-install-recommends \
-       ssmtp
+    php7.0-fpm
 
 # Add default timezone
 RUN echo $LYBERTEAM_TIME_ZONE > /etc/timezone \
