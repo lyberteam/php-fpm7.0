@@ -23,7 +23,6 @@ RUN apt-key add /tmp/dotdeb.gpg \
     && echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list \
     && echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 
-## Install php7.0 extension
 RUN apt-get update -yqq \
     && apt-get install -yqq \
 	ca-certificates \
@@ -34,6 +33,11 @@ RUN apt-get update -yqq \
     mc \
     curl \
     cron \
+    zip \
+    ssmtp
+
+## Install php7.0 extension
+RUN apt-get install -yqq \
     php7.0-pgsql \
 	php7.0-mysql \
 	php7.0-opcache \
