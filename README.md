@@ -121,7 +121,8 @@ No you type awesome.io in your favorite browser and enjoy.
  * php7.0-memcached
  * php7.0-mongodb
  * php7.0-xdebug (`only for lyberteam/php-fpm7.0:xdebug`)
- * php7.0-imagick (`new`)
+ * php7.0-imagick
+ * php7.0-apcu (`new`)
 
 ### In addition
 
