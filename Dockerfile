@@ -90,7 +90,7 @@ RUN touch /usr/local/bin/wkhtmltopdf \
     && echo 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' > /usr/local/bin/wkhtmltopdf \
     && chmod a+x /usr/local/bin/wkhtmltopdf
 
-RUN usermod -aG www-data www-data
+RUN usermod -aG 1000 www-data
 # Reconfigure system time
 RUN  dpkg-reconfigure -f noninteractive tzdata
 
