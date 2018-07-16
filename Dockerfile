@@ -91,7 +91,7 @@ RUN tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN mv wkhtmltox/bin/wkhtmlto* /usr/bin/
 RUN ln -nfs /usr/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
-RUN usermod -aG 1000 www-data
+RUN usermod -aG www-data www-data
 # Reconfigure system time
 RUN  dpkg-reconfigure -f noninteractive tzdata
 
